@@ -1,0 +1,38 @@
+<!-- Źródło / Source: https://mochajs.org/#running-mocha-in-the-browser -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="scisly.js"></script>
+    <title>
+        Mocha tests
+    </title>
+    <script src="https://unpkg.com/chai/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="https://unpkg.com/mocha/mocha.css">
+</head>
+<body onload="runPrompting()">
+
+<div id="mocha">
+</div>
+
+<script class="mocha-init">
+
+    mocha.setup('bdd');
+    mocha.checkLeaks();
+</script>
+<script src="script.js"></script>
+<script class="mocha-exec">
+    describe('Test test', function() {
+        it('Test testu', function() {
+            expect(2).to.equal(2);
+        });
+    });
+
+    mocha.run();
+</script>
+</body>
+</html>

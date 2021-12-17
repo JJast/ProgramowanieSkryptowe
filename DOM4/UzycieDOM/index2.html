@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        class SpanCounter extends HTMLElement {
+
+            constructor() {
+                super();
+                this.shadow = this.attachShadow({mode: 'open'});
+
+                this.counter = 10;
+                setInterval(this.updateSpanValue, 1000, this);
+            }
+
+            setNewcounter(e) {
+                this.counter = e.currentTarget.value;
+            }
+
+            connectedCallback() {
+                this.render();
+                let licznik = document.querySelector("#licznik");
+                licznik.addEventListener('focusout', this.setNewcounter.bind(this));
+            }
+
+            render() {
+                this.shadow.innerHTML = `<span>${this.counter}</span>`;
+            }
+
+            updateSpanValue(currinstance) {
+                currinstance.render();
+
+                if(currinstance.counter === 0) {
+                    counterInput.value = 0;
+                }
+                if(currinstance.counter > 0) {
+                    currinstance.counter--;
+                }
+            }
+        }
+
+        customElements.define('span-counter', SpanCounter);
+    </script>
+</head>
+<body>
+<form>
+    <input type="number" id="licznik" name="counter" min="1" max="50"value="10" onchange="setCounter()"><br><br>
+</form>
+<div id="spanDiv">
+    <span-counter>0</span-counter><span-counter>0</span-counter><span-counter>0</span-counter><span-counter>0</span-counter><span-counter>0</span-counter><span-counter>0</span-counter><span-counter>0</span-counter>
+    <span-counter>0</span-counter><span-counter>0</span-counter><span-counter>0</span-counter><span-counter>0</span-counter><span-counter>0</span-counter><span-counter>0</span-counter><span-counter>0</span-counter>
+</div>
+<script>
+    var currentDisplayedNum = 10;
+
+    var counterInput = document.getElementById("licznik");
+
+    function setCounter() {
+        currentDisplayedNum = counterInput.value;
+    }
+</script>
+
+</body>
+</html>

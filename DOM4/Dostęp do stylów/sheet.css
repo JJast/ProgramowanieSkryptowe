@@ -1,0 +1,87 @@
+aside  {
+    position:absolute;
+    right: 0px;
+    top: 110px;
+    padding-left: 5px;
+    padding-right: 50px;
+    margin-right: 15px;
+}
+footer {
+    margin: 0 0px 15px 20px ;
+    padding: 10px;
+}
+header {
+    margin: 0 0px 15px 20px;
+    padding: 5px 5px;
+}
+main {
+    margin: 15px 25px;
+    width: 500px;
+    padding: 5px;
+    /* Specyfikacja wyglądu */
+}
+nav {
+    /* Specyfikacja wyglądu */
+    width: 150px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+nav ul {
+    /* Specyfikacja wyglądu */
+}
+nav li {
+    /* Specyfikacja wyglądu */
+}
+
+
+.azure {
+    background-color: #EFF;
+}
+
+.myborder {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-color: #A8A8A8;
+    border-style: solid;
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    header {
+        color: red;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    header {
+        color: blue;
+    }
+}
+
+@media screen and (min-width: 993px) {
+    header {
+        animation: colorchangeRedBlue 5s infinite;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    aside {
+        position: inherit;
+        
+        margin-top: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 10px;
+    }
+}
+
+
+@keyframes colorchangeRedBlue {
+    0% {
+        color: blue;
+    }
+    50% {
+        color: red;
+    }
+    100% {
+        color: blue;
+    }
+}

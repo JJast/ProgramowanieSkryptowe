@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Page title
+    </title>
+</head>
+<body>
+<main>
+    <h1>
+        Płótno
+    </h1>
+
+    <h1>
+        Canvas
+    </h1>
+
+    <canvas id="canvas"
+            width="200"
+            height="300"
+            style="border:1px solid #000000;">
+        Wygląda na to, że twoja przeglądarka nie obsługuje elementu "canvas" / It looks like your browser does not support the "canvas" element
+    </canvas>
+
+    <canvas id="cKolo" width="300" height="150"></canvas>
+    <canvas id="cTrojkat" width="300" height="150"></canvas>
+    <canvas id="cKwadrat" width="300" height="300"></canvas>
+</main>
+
+<script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    ctx.fillText("Hello World", 10, 50); //Wykreślenie podanego tekstu na płótnie / Drawing given text on canvas
+
+    var c = document.getElementById("cKolo");
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(100, 75, 50, 0, 2 * Math.PI);   // x, y, radius, startAngle, endAngle
+    ctx.closePath();
+    ctx.stroke();
+    
+
+    var c = document.getElementById("cTrojkat");
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.moveTo(75, 75);
+    ctx.lineTo(15, 15);
+    ctx.lineTo(75, 15);
+    ctx.closePath();
+    ctx.stroke();
+
+    var c = document.getElementById("cKwadrat");
+    var ctx = c.getContext("2d");
+    ctx.strokeRect(125, 125, 150, 100);   // x,y, width, height
+</script>
+</body>
+</html>

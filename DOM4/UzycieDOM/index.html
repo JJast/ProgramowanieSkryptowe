@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <input type="number" id="licznik" name="counter" min="1" max="50"value="10" onchange="setCounter()"><br><br>
+</form>
+<div id="spanDiv">
+<span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span>
+<span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span>
+</div>
+<script>
+    setInterval(updateSpans, 1000);
+    var currentDisplayedNum = 10;
+
+    var counterInput = document.getElementById("licznik");
+    var spanDiv = document.getElementById("spanDiv");
+
+    function updateSpans() {
+
+        var spanDivChildren = spanDiv.querySelectorAll("span");
+        spanDivChildren.forEach(function(item){
+            item.innerText = currentDisplayedNum;
+        });
+
+        if(currentDisplayedNum === 0) {
+            counterInput.value = 0;
+        }
+        if(currentDisplayedNum > 0) {
+            currentDisplayedNum--;
+        }
+    }
+
+    function setCounter() {
+        currentDisplayedNum = counterInput.value;
+    }
+</script>
+
+</body>
+</html>

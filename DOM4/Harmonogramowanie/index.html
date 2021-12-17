@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="css/style.css" rel="stylesheet"/>
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+    <script>
+        var chart;
+        window.onload = function () {
+            chart = new CanvasJS.Chart("chartContainer",
+                {
+                    title:{
+                        text: "Pointless computations chart"
+                    },
+                    axisX:{
+                        title: "pointlessAnimation button count",
+                    },
+                    axisY:{
+                        title: "Computation Time [ms]",
+                    },
+                    data: [
+                        {
+                            type: "line",
+                            dataPoints: [
+                            ]
+                        }
+                    ]
+                });
+
+            chart.render();
+        }
+    </script>
+</head>
+
+<body>
+
+<span id="radio-group">
+    <fieldset>
+        <legend>Pick blocking method</legend>
+        <input id="use-blocking-js" type="checkbox" name="worker" value="use-blocking-js" checked="true">Use blocking call in main thread</input>
+        <input id="use-request-animation-frame" type="checkbox" name="worker" value="request-animation-frame">Use requestAnimationFrame</input>
+        <input id="use-set-interval" type="checkbox" name="worker" value="set-interval">Use setInterval</input>
+        <input id="use-set-timeout" type="checkbox" name="worker" value="set-timeout">Use setTimeout</input>
+        <input id="use-worker" type="checkbox" name="worker" value="use-worker">Use a worker</input>
+    </fieldset>
+    </span>
+
+<input id ="pointless-computations" type="button" name="pointless-computations" value="Do pointless computations!" />
+
+<input id ="start-stop" type="button" name="start-stop" value="Start animations" />
+
+<div id="container">
+    <div class="moving-box"></div>
+</div>
+
+<script type="text/javascript" src="js/blocking.js"></script>
+<script type="text/javascript" src="js/raf.js"></script>
+<script type="text/javascript" src="js/worker.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+
+<div id="chartContainer" style="height: 500px; width: 50%;"></div>
+<span id="timeToRender"></span>
+<pre>Timeout czesto sie rozni, jest wiekszy niz powinien! (poniewaz JS jest jednowatkowy i wydarzenia sa kolejkowane)
+setTimeout i setInterval dzialaja inaczej!
+Kod jest wykonywany w glownym watku</pre>
+</html>
+
+
+
+<!-- Wąskie gardła: apllikacja dzialajca na jednym watku-->
