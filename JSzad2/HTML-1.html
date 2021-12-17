@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="css/style.css" rel="stylesheet"/>
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+    <script>
+        var chart;
+        window.onload = function () {
+            chart = new CanvasJS.Chart("chartContainer",
+                {
+                    title:{
+                        text: "Pointless computations chart"
+                    },
+                    axisX:{
+                        title: "pointlessAnimation button count",
+                    },
+                    axisY:{
+                        title: "Computation Time [ms]",
+                    },
+                    data: [
+                        {
+                            type: "line",
+                            dataPoints: [
+                            ]
+                        }
+                    ]
+                });
+            chart.render();
+        }
+    </script>
+</head>
+<body>
+    <span id ="radio-group">
+        <legend>Pick blocking method</legend>
+        <input id="use-set-interval" type="checkbox" name="worker" value="set-interval">Use setInterval</input>
+        <input id="use-set-timeout" type="checkbox" name="worker" value="set-timeout">Use setTimeout</input>
+    </span>
+    <form class="mx-auto" style="width: 50%;">
+        <br>
+            <input class="form-control" type="button" value="Start" id="start" placeholder="Start">
+            <input class="form-control" type="button" value="Stop" id="stop" placeholder="Stop">
+            <input class="form-control" type="number" id="delay" placeholder="Delay">
+    </form>
+    <div class="mx-auto" style="width: 200px; text-align: center;">
+        Output:
+        <br>
+    </div>
+    <div id="chartContainer" style="height: 500px; width: 50%;"></div>
+        <script src="script.js"></script>
+        <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
