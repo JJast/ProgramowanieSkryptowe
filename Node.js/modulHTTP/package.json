@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "supertest": "^6.1.6"
+  },
+  "dependencies": {
+    "formidable": "^2.0.1"
+  }
+}
